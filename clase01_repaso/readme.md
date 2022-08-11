@@ -1,0 +1,1 @@
+Clase de repaso de javscript. Como temas nuevos vimos map, filter y destructuring.

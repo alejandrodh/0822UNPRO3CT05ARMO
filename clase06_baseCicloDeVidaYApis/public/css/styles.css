@@ -1,0 +1,133 @@
+/* Resets */
+*{
+    box-sizing: border-box;
+}
+ul,ol {
+    padding: 0;
+}
+li {
+    list-style-type:none;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+body {
+    font-family: Nunito;
+    margin: 0;
+    background-color: #eee;
+    padding-bottom: 150px;
+}
+
+/* Navigation */
+nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: #4e73df;
+    color: #fff
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.main-nav li,
+.user li {
+    margin: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+.main-nav li:first-child {
+    font-weight: bold;
+}
+
+.user img {
+    width: 30px;
+    border-radius: 90%;
+    margin-left: 10px;
+}
+
+h1,h2 {
+    font-weight: 400;
+}
+
+h1,
+main {
+    padding: 0 30px;
+}
+
+/* Top data */
+.top-data {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: #666;
+}
+.data-detail {
+    width: 32%;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 10px 30px;
+    text-transform: capitalize;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.data-detail p {
+    margin-top:0;
+}
+.data-detail h4 {
+    margin-bottom: 0;
+}
+
+/* Categorías */
+.general-data {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20px 20px 10px 20px;
+}
+.general-data .card {
+    width: 32%;
+    border-radius: 4px;
+    background-color: #36b9cc;
+    margin-bottom: 10px;
+    padding: 0 20px;
+    color: #fff;
+}
+
+/* Characters Container */
+.card-container {
+    margin-top: 20px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* footer */
+footer {
+    background-color: #dedede;
+    text-align: center;
+    padding: 40px 0;
+    color: #666;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

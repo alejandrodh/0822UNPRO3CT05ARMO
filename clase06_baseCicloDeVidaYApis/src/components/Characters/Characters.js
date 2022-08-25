@@ -48,7 +48,7 @@ class Characters extends Component{
                 <button onClick={()=>this.traerMas()}> Traer más </button>
                 <section className='cardContainer'>
                     { 
-                        this.state.personajes.map( (unPersonaje, idx) => <CharacterCard key={unPersonaje.name+idx} datosPersonaje={unPersonaje} borrar={(id)=>this.borrar(id)}/>)
+                        this.state.personajes.map( (unPersonaje, idx) => <CharacterCard key={unPersonaje.name+idx} datosPersonaje={unPersonaje} borrar={(manzana)=>this.borrar(manzana)}/>)
                     }
                 </section>
             </React.Fragment>

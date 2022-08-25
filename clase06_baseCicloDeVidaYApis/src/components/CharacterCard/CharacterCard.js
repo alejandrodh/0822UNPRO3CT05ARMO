@@ -10,7 +10,8 @@ class CharacterCard extends Component{
     }
 
     render(){
-        // console.log(this.props);
+        console.log('En la tarjeta ++++++++++++++');
+        console.log(this.props);
         return(
              <article className='character-card'>
                 <img src={this.props.datosPersonaje.image} alt="" />

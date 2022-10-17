@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View,
          Text,
          TextInput,
-         TouchableOpacity } from 'react-native';
+         TouchableOpacity,
+        StyleSheet } from 'react-native';
 
 class Register extends Component {
     constructor(){
@@ -21,7 +22,7 @@ class Register extends Component {
                 <Text>Registro</Text>
                 <View>
                     <TextInput 
-                        style={styles.field}
+                        // style={styles.field}
                         placeholder='email'
                         keyboardType='email-address'
                         onChangeText={ text => this.setState({email:text}) }
@@ -33,7 +34,7 @@ class Register extends Component {
             </View>
         )
     }
-
+    
 }
 
 

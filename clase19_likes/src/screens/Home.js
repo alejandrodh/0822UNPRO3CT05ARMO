@@ -13,7 +13,7 @@ class Home extends Component{
     }
 
     componentDidMount(){
-        db.collection('posts').where('owner','==','ale@dh.com').limit(2).onSnapshot(
+        db.collection('posts').where('email','==','ale@dh.com').onSnapshot(
             docs => {
                 //console.log(docs);
                 let posts = [];

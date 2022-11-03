@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 import {auth, db} from '../firebase/config';
 import firebase from 'firebase';
@@ -46,6 +46,11 @@ class Post extends Component {
         console.log(this.props);
         return(
             <View>
+                <Image 
+                    style={styles.photo}
+                    source={{uri: this.props.postData.data.photo}}
+                    resizeMode='cover'
+                />
                 <Text> {this.props.postData.data.textoPost} </Text>
                 <Text> Cantidad de Likes: {this.state.cantidadDeLikes} </Text>
                 { this.state.miLike ? 
@@ -61,5 +66,10 @@ class Post extends Component {
         )
     }
 }
+const styles = StyleSheet.create({
+    photo:{
+        height:250
+    }
+}) 
 
 export default Post;

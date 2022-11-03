@@ -11,7 +11,7 @@ class NewPost extends Component{
             textoPost:'',
             createdAt:'',
             photo:'',
-            showCamera: true
+            showCamera: true,
         }
     }
 
@@ -26,11 +26,19 @@ class NewPost extends Component{
             })
             .then(() => {
                 this.setState({
-                    texto:'',
+                    textoPost:'',
+                    showCamera: true,
                 })
                 this.props.navigation.navigate('Home')
             })
             .catch( e => console.log(e))
+    }
+
+    onImageUpload(url){
+        this.setState({
+            photo: url,
+            showCamera: false,
+        })
     }
 
     render(){
@@ -38,7 +46,7 @@ class NewPost extends Component{
             <View>
             {
                 this.state.showCamera ?
-                <MyCamera />
+                <MyCamera onImageUpload={url => this.onImageUpload(url)}/>
                 :
                 <View>
                     <Text> Nuevo posteo form</Text>

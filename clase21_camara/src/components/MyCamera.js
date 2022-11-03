@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Camera } from 'expo-camera';
 import {storage} from '../firebase/config';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 
 class MyCamera extends Component{
     constructor(props){
@@ -35,12 +35,28 @@ class MyCamera extends Component{
             .catch( e => console.log(e))
     }
 
+    guardarFoto(){
+        fetch(this.state.urlTemporal) //buscar la foto de la carpeta temporal en nuestra máquina
+            .then(res => res.blob()) //Quedarnos con la foto en formato binario.
+            .then( image => { //Ya podemos trabajar el dato final.
+                //Crear el destino y nombre con el que se guarda la foto en Storage
+                const refStorage = storage.ref(`photos/${Date.now()}.jpg`);
+                refStorage.put(image) //Mandar la foto al storage. Put es asincrónico.
+                    .then(()=>{
+                        refStorage.getDownloadURL() //la url pública de firebase.
+                        .then( url => this.props.onImageUpload(url))
+                    })
+            })
+            .catch(e => console.log(e))
+    }
+
 
     render(){
         return(
             <View>
             {
                 this.state.permissions ? 
+                    this.state.showCamera ?
                     <View style={styles.cameraBody}>
                         <Camera
                             style={styles.cameraBody}
@@ -51,6 +67,21 @@ class MyCamera extends Component{
                             <Text>Sacar foto</Text>
                         </TouchableOpacity>
                     </View>
+                    :
+                    <View>
+                        <Image 
+                            style={styles.preview}
+                            source={{uri: this.state.urlTemporal}}
+                            resizeMode='cover'
+                        />
+                        <TouchableOpacity style={styles.button} onPress={()=>this.cancelar()}>
+                            <Text>Cancelar</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={()=>this.guardarFoto()}>
+                            <Text>Aceptar</Text>
+                        </TouchableOpacity>
+                    </View>
+
                 :
                     <Text>No tengo permisos</Text>
             }
@@ -72,9 +103,9 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         marginTop: 20
     },
-    // preview:{
-    //     height:'80%'
-    // }
+    preview:{
+        height:'40vh'
+    }
 }) 
 
 export default MyCamera;

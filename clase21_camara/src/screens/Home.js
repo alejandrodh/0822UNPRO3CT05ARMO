@@ -13,7 +13,7 @@ class Home extends Component{
     }
 
     componentDidMount(){
-        db.collection('posts').where('owner','==','ale@dh.com').limit(2).onSnapshot(
+        db.collection('posts').onSnapshot(
             docs => {
                 //console.log(docs);
                 let posts = [];
@@ -34,15 +34,17 @@ class Home extends Component{
     render(){
         console.log(this.state.posts);
         return(
-            <View>
+            <>
                 <Text> Home</Text>
                 <Text> Lista de posteos </Text>
-                <FlatList 
-                    data={this.state.posts}
-                    keyExtractor={ onePost => onePost.id.toString()}
-                    renderItem={ ({item}) => <Post postData={item} />}
-                />        
-            </View>
+                
+                    <FlatList 
+                        data={this.state.posts}
+                        keyExtractor={ onePost => onePost.id.toString()}
+                        renderItem={ ({item}) => <Post postData={item} />}
+                    />        
+                
+            </>
 
         )
     }
